@@ -1,0 +1,112 @@
+import personas.*
+import remiseras.*
+
+describe "Ana Maria" {
+
+	test "Está economicamente estable" {
+		assert.that(anaMaria.estaEstable())
+	}
+	
+	test "No está economicamente estable" {
+		anaMaria.cambiarEstabilidad()
+		assert.notThat(anaMaria.estaEstable())
+	}
+}
+
+describe "Viaje de 10km de Roxana"{
+	
+	test "con Ludmila"{
+		assert.equals(roxana.precioViaje(ludmila, 10), 180)
+	}
+	
+	test "con Ana Maria"{
+		assert.equals(roxana.precioViaje(anaMaria, 10), 300)
+	}
+	
+	test "con Teresa"{
+		assert.equals(roxana.precioViaje(teresa, 10), 220)
+	}
+}
+
+describe "Viaje de 10km de Gabriela"{
+	
+	test "con Ludmila"{
+		assert.equals(gabriela.precioViaje(ludmila, 10), 216)
+	}
+	
+	test "con Ana Maria"{
+		assert.equals(gabriela.precioViaje(anaMaria, 10), 360)
+	}
+	
+	test "con Teresa"{
+		assert.equals(gabriela.precioViaje(teresa, 10), 264)
+	}
+}
+
+describe "Viaje de 10km de Mariela"{
+	
+	test "con Ludmila"{
+		assert.equals(mariela.precioViaje(ludmila, 10), 180)
+	}
+	
+	test "con Ana Maria"{
+		assert.equals(mariela.precioViaje(anaMaria, 10), 300)
+	}
+	
+	test "con Teresa"{
+		assert.equals(mariela.precioViaje(teresa, 10), 220)
+	}
+}
+
+describe "Viaje de 10km de Juana"{
+	
+	test "con Ludmila"{
+		assert.equals(juana.precioViaje(ludmila, 10), 200)
+	}
+	
+	test "con Ana Maria"{
+		assert.equals(juana.precioViaje(anaMaria, 10), 200)
+	}
+	
+	test "con Teresa"{
+		assert.equals(juana.precioViaje(teresa, 10), 200)
+	}
+}
+
+describe "Testing de Teresa" {
+	
+	test "Precio por kilometro sin cambios a 22"{
+		assert.equals(22, teresa.precioViaje())
+	}
+	
+}
+
+describe "Testing de Lucia"{
+	
+	test "No se puede reemplazar a si misma"{
+		assert.throwsExceptionWithMessage("No se puede reemplazar a si mismo", {lucia.estaReemplazando(lucia)})
+	}
+	
+	test "No se puede reemplazar a si mismo"{
+		assert.doesNotThrowException({lucia.estaReemplazando(roxana)})
+	}
+	
+	test "Reemplazo de Roxana"{
+		lucia.estaReemplazando(roxana)
+		assert.equals(lucia.precioViaje(ludmila, 10), 180)
+	}
+}
+
+describe "Testing de Melina"{
+	
+	test "No se puede reemplazar a si misma"{
+		assert.throwsExceptionWithMessage("No se puede reemplazar a si misma", {melina.trabajaPara(melina)})
+	}
+	
+	test "No se puede reemplazar a si mismo"{
+		assert.doesNotThrowException({melina.trabajaPara(roxana)})
+	}
+	
+}
+
+
